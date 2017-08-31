@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.btn_Show = new System.Windows.Forms.Button();
             this.comboBox_Queries = new System.Windows.Forms.ComboBox();
             this.dataGridViewQuery = new System.Windows.Forms.DataGridView();
@@ -69,8 +70,8 @@
             this.Controls.Add(this.dataGridViewQuery);
             this.Controls.Add(this.comboBox_Queries);
             this.Controls.Add(this.btn_Show);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
-            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "System Info Scanner";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewQuery)).EndInit();

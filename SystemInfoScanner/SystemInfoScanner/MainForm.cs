@@ -16,15 +16,19 @@ namespace SystemInfoScanner
     {
         public List<string> queriesList = new List<string>
         {
-            "Win32_DiskDrive",
-            "Win32_OperatingSystem",
-            "Win32_Processor",
-            "Win32_ComputerSystem",
-            "Win32_StartupCommand",
-            "Win32_ProgramGroup",
-            "Win32_SystemDevices"
+
+            "Win32_OperatingSystem",        // OS version
+            "Win32_Product",                // installed software
+            "Win32_ComputerSystem",         // overall info, like: comp. name, model, manufacturer
+            "Win32_BIOS",                   // BIOS: for motherboard serial number
+            "Win32_Processor",              // CPU model
+            "Win32_PhysicalMemory",         // RAM
+            "Win32_PhysicalMemoryArray",    // RAM Max
+            "Win32_DiskDrive",              // HDD capacity
+            "Win32_DesktopMonitor"          // monitors/displays
+
         };
-        
+
         public MainForm()
         {
             InitializeComponent();
@@ -64,5 +68,8 @@ namespace SystemInfoScanner
             }
             return arrDetails;
         }
+
+
+
     }
 }
