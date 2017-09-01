@@ -29,6 +29,36 @@ namespace SystemInfoScanner
 
         };
 
+        // chassis type enumeration
+        public enum ChassisTypes
+        {
+            Other = 1,
+            Unknown,
+            Desktop,
+            LowProfileDesktop,
+            PizzaBox,
+            MiniTower,
+            Tower,
+            Portable,
+            Laptop,
+            Notebook,
+            Handheld,
+            DockingStation,
+            AllInOne,
+            SubNotebook,
+            SpaceSaving,
+            LunchBox,
+            MainSystemChassis,
+            ExpansionChassis,
+            SubChassis,
+            BusExpansionChassis,
+            PeripheralChassis,
+            StorageChassis,
+            RackMountChassis,
+            SealedCasePC
+        }
+
+
         public MainForm()
         {
             InitializeComponent();
@@ -36,10 +66,12 @@ namespace SystemInfoScanner
             comboBox_Queries.DataSource = queriesList;
         }
 
+
         private void btn_Show_Click(object sender, EventArgs e)
         {
             dataGridViewQuery.DataSource = GetStuff(comboBox_Queries.Text);
         }
+
 
         //method to obtain all the info > depending on the query
         public ArrayList GetStuff(string queryObject)
@@ -70,6 +102,27 @@ namespace SystemInfoScanner
         }
 
 
+        // chassis type >> from Win32_SystemEnclosure
+        private void btn_Chassis_Click(object sender, EventArgs e)
+        {
+            textBox_Chassis.Text = GetChassisType().ToString();
+        }
+
+        public static ChassisTypes GetChassisType()
+        {
+            ManagementClass systemEnclosures = new ManagementClass("Win32_SystemEnclosure");
+            foreach (ManagementObject obj in systemEnclosures.GetInstances())
+            {
+                foreach (int i in (UInt16[])(obj["ChassisTypes"]))
+                {
+                    if (i > 0 && i < 25)
+                    {
+                        return (ChassisTypes)i;
+                    }
+                }
+            }
+            return ChassisTypes.Unknown;
+        }
 
     }
 }
