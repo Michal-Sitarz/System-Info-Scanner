@@ -34,6 +34,7 @@
             this.dataGridViewQuery = new System.Windows.Forms.DataGridView();
             this.btn_Chassis = new System.Windows.Forms.Button();
             this.textBox_Chassis = new System.Windows.Forms.TextBox();
+            this.btn_getRAMinfo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewQuery)).BeginInit();
             this.SuspendLayout();
             // 
@@ -80,12 +81,23 @@
             this.textBox_Chassis.Size = new System.Drawing.Size(206, 20);
             this.textBox_Chassis.TabIndex = 4;
             // 
+            // btn_getRAMinfo
+            // 
+            this.btn_getRAMinfo.Location = new System.Drawing.Point(848, 22);
+            this.btn_getRAMinfo.Name = "btn_getRAMinfo";
+            this.btn_getRAMinfo.Size = new System.Drawing.Size(129, 26);
+            this.btn_getRAMinfo.TabIndex = 5;
+            this.btn_getRAMinfo.Text = "Get RAM info";
+            this.btn_getRAMinfo.UseVisualStyleBackColor = true;
+            this.btn_getRAMinfo.Click += new System.EventHandler(this.btn_getRAMinfo_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(1008, 609);
+            this.Controls.Add(this.btn_getRAMinfo);
             this.Controls.Add(this.textBox_Chassis);
             this.Controls.Add(this.btn_Chassis);
             this.Controls.Add(this.dataGridViewQuery);
@@ -108,6 +120,7 @@
         private System.Windows.Forms.DataGridView dataGridViewQuery;
         private System.Windows.Forms.Button btn_Chassis;
         private System.Windows.Forms.TextBox textBox_Chassis;
+        private System.Windows.Forms.Button btn_getRAMinfo;
     }
 }
 

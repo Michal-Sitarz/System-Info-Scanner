@@ -124,5 +124,39 @@ namespace SystemInfoScanner
             return ChassisTypes.Unknown;
         }
 
+        // get RAM button
+        private void btn_getRAMinfo_Click(object sender, EventArgs e)
+        {
+            dataGridViewQuery.DataSource = GetRAM();
+        }
+
+        // method to obtain RAM details
+        public ArrayList GetRAM()
+        {
+            ManagementObjectSearcher searcher;
+            int i = 0;
+            ArrayList arrDetails = new ArrayList();
+            try
+            {
+                searcher = new ManagementObjectSearcher("SELECT DeviceLocator, Capacity FROM Win32_PhysicalMemory");
+                foreach (ManagementObject wmi_Info in searcher.Get())
+                {
+                    i++;
+                    PropertyDataCollection searcherProperties =
+                      wmi_Info.Properties;
+                    foreach (PropertyData sp in searcherProperties)
+                    {
+                        arrDetails.Add(sp);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return arrDetails;
+        }
+
+        
     }
 }
